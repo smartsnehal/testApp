@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MapKit
 
 struct EmployeeListViewModel {
     let employees: [Employee]
@@ -52,7 +53,49 @@ extension EmployeeViewModel {
         return self.employee.name?.last ?? ""
     }
     
+    var fullName: String {
+        var title = self.employee.name?.title ?? ""
+        return "\(title) \(firstName) \(lastName)"
+    }
+    
     var imageName: String {
         return self.employee.picture?.thumbnail ?? ""
     }
+    
+    var imageLargeName: String {
+        return self.employee.picture?.large ?? ""
+    }
+    
+    var email: String {
+        return self.employee.email ?? ""
+    }
+    
+    var phoneNumber: String {
+        return self.employee.phone ?? ""
+    }
+    
+    var dob: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+      if let date = dateFormatter.date(from:self.employee.dob.date) {
+        dateFormatter.dateFormat = "dd-MMM-yyyy"
+        dateFormatter.timeZone = NSTimeZone.local
+        let timeStamp = dateFormatter.string(from: date)
+        return timeStamp
+        } else {
+        return ""
+        }
+    }
+    
+  /*  var fullLocation: String {
+        var number = self.employee.location?.street?.number
+        
+        return "\(number)"
+    }
+    */
+    
+ /*  var mapLocation: CLLocation {
+        return self.employee.picture?.thumbnail ?? ""
+    }
+ */
 }
