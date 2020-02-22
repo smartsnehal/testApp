@@ -10,9 +10,12 @@ import UIKit
 
 class EmployeeDetailsViewController: UIViewController {
 
+    var employeeVM: EmployeeViewModel!
+      
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print(employeeVM.firstName)
         // Do any additional setup after loading the view.
     }
     

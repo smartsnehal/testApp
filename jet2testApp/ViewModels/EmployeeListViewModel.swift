@@ -53,6 +53,6 @@ extension EmployeeViewModel {
     }
     
     var imageName: String {
-        return self.employee.picture?.medium ?? ""
+        return self.employee.picture?.thumbnail ?? ""
     }
 }

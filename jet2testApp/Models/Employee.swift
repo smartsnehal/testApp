@@ -20,6 +20,10 @@ struct Employee: Codable {
     let gender: String?
     let name : Name?
     let picture: Picture?
+    let dob: DOB?
+    let email: String?
+    let location: Location?
+    let phone: String?
 }
 
 struct Name: Codable {
@@ -28,5 +32,19 @@ struct Name: Codable {
 }
 
 struct Picture: Codable {
-    let medium: String?
+    let thumbnail: String?
+    let large: String?
+}
+
+struct DOB: Codable {
+    let date: String?
+    let large: String?
+}
+
+struct Location: Codable {
+    let coordinates: Coordinates?
+}
+struct Coordinates: Codable {
+    let latitude: String?
+    let longitude: String?
 }

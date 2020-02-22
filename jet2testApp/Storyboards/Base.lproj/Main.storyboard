@@ -113,7 +113,7 @@
         <!--Employee Details View Controller-->
         <scene sceneID="ESv-93-Y3A">
             <objects>
-                <viewController id="9G4-aj-2IF" customClass="EmployeeDetailsViewController" customModule="jet2testApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EmployeeDetailsViewController" id="9G4-aj-2IF" customClass="EmployeeDetailsViewController" customModule="jet2testApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zFS-uw-AY3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
