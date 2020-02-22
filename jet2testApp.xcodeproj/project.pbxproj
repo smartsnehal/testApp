@@ -20,6 +20,7 @@
 		3614D985240142E200455FC0 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3614D984240142E200455FC0 /* Employee.swift */; };
 		3614D987240143E900455FC0 /* EmployeeListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3614D986240143E900455FC0 /* EmployeeListTableViewController.swift */; };
 		3614D9892401440F00455FC0 /* EmployeeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3614D9882401440F00455FC0 /* EmployeeDetailsViewController.swift */; };
+		36C415BA2401756C00290F95 /* EmployeeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C415B92401756C00290F95 /* EmployeeTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		3614D984240142E200455FC0 /* Employee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
 		3614D986240143E900455FC0 /* EmployeeListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeListTableViewController.swift; sourceTree = "<group>"; };
 		3614D9882401440F00455FC0 /* EmployeeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeDetailsViewController.swift; sourceTree = "<group>"; };
+		36C415B92401756C00290F95 /* EmployeeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 		3614D9492401404900455FC0 /* jet2testApp */ = {
 			isa = PBXGroup;
 			children = (
+				36C415B62401752F00290F95 /* Views */,
 				3614D97F2401428B00455FC0 /* Services */,
 				3614D97E2401427F00455FC0 /* ViewModels */,
 				3614D97D2401427100455FC0 /* Models */,
@@ -189,6 +192,22 @@
 				3614D980240142AD00455FC0 /* WebService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		36C415B62401752F00290F95 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				36C415B82401754800290F95 /* Cells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		36C415B82401754800290F95 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				36C415B92401756C00290F95 /* EmployeeTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -327,6 +346,7 @@
 				3614D983240142C900455FC0 /* EmployeeListViewModel.swift in Sources */,
 				3614D9892401440F00455FC0 /* EmployeeDetailsViewController.swift in Sources */,
 				3614D94B2401404900455FC0 /* AppDelegate.swift in Sources */,
+				36C415BA2401756C00290F95 /* EmployeeTableViewCell.swift in Sources */,
 				3614D981240142AD00455FC0 /* WebService.swift in Sources */,
 				3614D94D2401404900455FC0 /* SceneDelegate.swift in Sources */,
 				3614D987240143E900455FC0 /* EmployeeListTableViewController.swift in Sources */,
