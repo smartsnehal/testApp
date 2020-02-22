@@ -9,10 +9,8 @@
 import UIKit
 
 class EmployeeTableViewCell: UITableViewCell {
-    @IBOutlet weak var lblFirstName: UILabel!
     
-    @IBOutlet weak var LblLastName: UILabel!
-    
+    @IBOutlet weak var lblFullName: UILabel!
     @IBOutlet weak var LblGender: UILabel!
     
     @IBOutlet weak var imgViewEmployee: UIImageView!
@@ -27,5 +25,11 @@ class EmployeeTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    func configureCell(vm:EmployeeViewModel)
+    {
+        self.lblFullName.text = "\(vm.firstName) \(vm.lastName)"
+        self.LblGender.text = vm.gender
+        self.imgViewEmployee.load(url: URL(string: vm.imageName)!)
     }
 }

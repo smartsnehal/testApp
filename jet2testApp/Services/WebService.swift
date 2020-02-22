@@ -7,7 +7,31 @@
 //
 
 import UIKit
+import Foundation
 
 class WebService {
+    
+    func getEmployeeList(url: URL, completion: @escaping ([Employee]?) -> ()) {
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            
+            if let error = error {
+                print(error.localizedDescription)
+                completion(nil)
+            } else if let data = data {
+                
+                let empList = try? JSONDecoder().decode(EmployeeList.self, from: data)
+                
+                if let empList = empList {
+                    completion(empList.Employees)
+                }
+                
+                print(empList?.Employees)
+                
+            }
+            
+        }.resume()
+        
+    }
 
 }
