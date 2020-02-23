@@ -22,7 +22,7 @@ struct Employee: Codable {
     let picture: Picture?
     let dob: DOB
     let email: String?
-    //let location: Location?
+    let location: Location
     let phone: String?
 }
 
@@ -39,22 +39,19 @@ struct Picture: Codable {
 
 struct DOB: Codable {
     let date: String
+    let age: Int
 }
 
 struct Location: Codable {
     let city: String?
-    let state:String?
+    let state: String?
     let country: String?
-    let postcode: String?
-    let street: Street?
-    let coordinates: Coordinates?
+    let coordinates: Coordinates
 }
+
 struct Coordinates: Codable {
-    let latitude: String?
-    let longitude: String?
+    let latitude: String
+    let longitude: String
 }
-struct Street: Codable {
-    let number: Int
-    let name: String?
-}
+
 

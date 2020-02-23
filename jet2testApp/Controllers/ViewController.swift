@@ -9,12 +9,19 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var txtRecord: UITextField!
+    @IBOutlet weak var sortSegmentControl: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
+    
+    override func performSegue(withIdentifier identifier: String, sender: Any?) {
+        if identifier == "listSegue"
+        {
+            
+        }
+    }
 }
 

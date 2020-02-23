@@ -28,14 +28,29 @@ class EmployeeDetailsViewController: UIViewController {
     }
     func setup()
     {
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         guard let vm = employeeVM else{
             fatalError("EmployeeViewModel not available" )
         }
+        self.title = vm.fullName
         imgViewPic.load(url: URL(string: vm.imageLargeName)!)
-        lblName.text = "Name: \(vm.fullName)"
         lblEmail.text = "Email: \(vm.email)"
         lblPhone.text = "Phone: \(vm.phoneNumber)"
         lblDob.text = "DOB: \(vm.dob)"
-        
+        lblLoc.text = vm.fullLocation
+        if let loc = vm.mapLocation as? CLLocationCoordinate2D
+        {
+            self.setupMap(coord:loc)
+        }        
+    }
+    
+    func setupMap(coord:CLLocationCoordinate2D)
+    {
+        let span = MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
+        let region = MKCoordinateRegion(center: coord, span: span)
+        self.mapViewLocation.setRegion(region, animated: true)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coord
+        self.mapViewLocation.addAnnotation(annotation)
     }
 }

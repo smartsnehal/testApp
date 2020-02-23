@@ -87,15 +87,19 @@ extension EmployeeViewModel {
         }
     }
     
-  /*  var fullLocation: String {
-        var number = self.employee.location?.street?.number
-        
-        return "\(number)"
+    var fullLocation: String {
+        var loc = self.employee.location.city! +
+                    ", " + self.employee.location.state!
+              + ", " + self.employee.location.country!
+        return loc
     }
-    */
+
     
- /*  var mapLocation: CLLocation {
-        return self.employee.picture?.thumbnail ?? ""
-    }
- */
+   var mapLocation: CLLocationCoordinate2D? {
+
+    let latitude = NSString( string: self.employee.location.coordinates.latitude).doubleValue
+    let longitude = NSString( string: self.employee.location.coordinates.longitude).doubleValue
+    let locationCoord = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        return locationCoord
+}
 }

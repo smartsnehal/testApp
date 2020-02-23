@@ -19,7 +19,7 @@ class EmployeeListTableViewController: UITableViewController {
     }
     
     func setup() {
-    self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         
         let url = URL(string: "https://randomuser.me/api/?results=1000")!
         
@@ -38,7 +38,7 @@ class EmployeeListTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-         return self.employeeListVM == nil ? 0 : self.employeeListVM.numberOfSections
+        return self.employeeListVM == nil ? 0 : self.employeeListVM.numberOfSections
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
