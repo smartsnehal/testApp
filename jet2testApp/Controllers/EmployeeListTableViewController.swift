@@ -20,6 +20,7 @@ class EmployeeListTableViewController: UITableViewController {
         super.viewDidLoad()
         
         setup()
+        self.tableView.tableFooterView = UIView()
     }
     
     func setup() {

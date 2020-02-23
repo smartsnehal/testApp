@@ -35,14 +35,7 @@ class EmployeeDetailsViewController: UIViewController {
         self.title = vm.fullName
         
         let url = URL(string: vm.imageLargeName)!
-        // imgViewPic.load(url: URL(string: vm.imageLargeName)!)
-        if let cachedImage = DataManager.shared.imageCache.object(forKey: url.absoluteString as NSString) {
-            self.imgViewPic.image = cachedImage as! UIImage
-        } else {
-        self.imgViewPic.load(url: url)
-            let image = UIImage(data: (self.imgViewPic.image?.pngData())!)
-            DataManager.shared.imageCache.setObject(image!, forKey: url.absoluteString as NSString)
-        }
+        imgViewPic.load(url: url)
         
         lblEmail.text = "Email: \(vm.email)"
         lblPhone.text = "Phone: \(vm.phoneNumber)"
