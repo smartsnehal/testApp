@@ -10,7 +10,7 @@ import Foundation
 import MapKit
 
 struct EmployeeListViewModel {
-    let employees: [Employee]
+    var employees: [Employee]
 }
 
 extension EmployeeListViewModel {
@@ -28,6 +28,19 @@ extension EmployeeListViewModel {
         return EmployeeViewModel(employee)
     }
     
+    mutating func sortEmployees(sortBy:String) -> Void
+    {
+        if sortBy == "name" {
+            self.employees =  employees.sorted(by: { (emp0: Employee, emp1: Employee) -> Bool in
+                return emp0.name.first < emp1.name.first
+            })
+                
+            } else if sortBy == "age" {
+            self.employees =  employees.sorted(by: { (emp0: Employee, emp1: Employee) -> Bool in
+                return emp0.dob.age < emp1.dob.age
+            })
+        }
+    }
 }
 
 struct EmployeeViewModel {
@@ -46,16 +59,16 @@ extension EmployeeViewModel {
     }
     
     var firstName: String {
-        return self.employee.name?.first ?? ""
+        return self.employee.name.first
     }
     
     var lastName: String {
-        return self.employee.name?.last ?? ""
+        return self.employee.name.last
     }
     
     var fullName: String {
-        var title = self.employee.name?.title ?? ""
-        return "\(title) \(firstName) \(lastName)"
+        var title = self.employee.name.title
+        return "\(title!) \(firstName) \(lastName)"
     }
     
     var imageName: String {

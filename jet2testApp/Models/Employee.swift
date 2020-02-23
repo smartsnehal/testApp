@@ -18,7 +18,7 @@ struct EmployeeList: Codable {
 
 struct Employee: Codable {
     let gender: String?
-    let name : Name?
+    let name : Name
     let picture: Picture?
     let dob: DOB
     let email: String?
@@ -28,8 +28,8 @@ struct Employee: Codable {
 
 struct Name: Codable {
     let title: String?
-    let first: String?
-    let last: String?
+    let first: String
+    let last: String
 }
 
 struct Picture: Codable {

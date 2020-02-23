@@ -9,19 +9,25 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
-    @IBOutlet weak var txtRecord: UITextField!
+
+    @IBOutlet weak var txtNumber: UITextField!
     @IBOutlet weak var sortSegmentControl: UISegmentedControl!
+    var segArray = ["name","age"]
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-    
-    override func performSegue(withIdentifier identifier: String, sender: Any?) {
-        if identifier == "listSegue"
-        {
-            
+
+    @IBAction func seeRecords(_ sender: Any) {
+        if let vc = storyboard?.instantiateViewController(identifier: "EmployeeListTableViewController") as? EmployeeListTableViewController {
+            if txtNumber.text?.count != 0 {
+                vc.number = Int(txtNumber.text!)!
+                vc.sortBy =  segArray[ sortSegmentControl.selectedSegmentIndex]
+            }
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
+    
+    
 }
 

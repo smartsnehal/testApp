@@ -12,6 +12,8 @@ import Foundation
 class EmployeeListTableViewController: UITableViewController {
     
     private var employeeListVM: EmployeeListViewModel!
+    var number = 5
+    var sortBy = "name"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,12 +23,13 @@ class EmployeeListTableViewController: UITableViewController {
     func setup() {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
-        let url = URL(string: "https://randomuser.me/api/?results=1000")!
+        let url = URL(string: "https://randomuser.me/api/?results=\(number)")!
         
         WebService().getEmployeeList(url:url){ employees in
             if let employees = employees {
                 
                 self.employeeListVM = EmployeeListViewModel(employees: employees)
+                self.employeeListVM.sortEmployees(sortBy: self.sortBy)
                 
                 DispatchQueue.main.async {
                     self.tableView.reloadData()

@@ -25,7 +25,7 @@
                                 <color key="tintColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <state key="normal" title="See Team members"/>
                                 <connections>
-                                    <segue destination="mMH-vm-tbt" kind="show" identifier="listSegue" id="tyT-cK-lx9"/>
+                                    <action selector="seeRecords:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SFs-6b-Xk6"/>
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="7w9-f5-kIY">
@@ -44,7 +44,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter total number of team members" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L4P-4Y-dTA">
                                 <rect key="frame" x="20" y="294" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -64,7 +64,7 @@
                     <navigationItem key="navigationItem" title="Manager Dashboard" id="rjh-76-5jJ"/>
                     <connections>
                         <outlet property="sortSegmentControl" destination="7w9-f5-kIY" id="H1c-Uc-q7A"/>
-                        <outlet property="txtRecord" destination="L4P-4Y-dTA" id="9dS-0o-VoX"/>
+                        <outlet property="txtNumber" destination="L4P-4Y-dTA" id="FyM-fM-lwa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -74,7 +74,7 @@
         <!--Team members-->
         <scene sceneID="nS2-1L-KqW">
             <objects>
-                <tableViewController title="Team members" id="mMH-vm-tbt" customClass="EmployeeListTableViewController" customModule="jet2testApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="EmployeeListTableViewController" title="Team members" id="mMH-vm-tbt" customClass="EmployeeListTableViewController" customModule="jet2testApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="FrA-cB-Ore">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
