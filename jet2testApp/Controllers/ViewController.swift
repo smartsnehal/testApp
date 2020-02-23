@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,UITextFieldDelegate{
 
     @IBOutlet weak var txtNumber: UITextField!
     @IBOutlet weak var sortSegmentControl: UISegmentedControl!
@@ -23,11 +23,23 @@ class ViewController: UIViewController {
             if txtNumber.text?.count != 0 {
                 vc.number = Int(txtNumber.text!)!
                 vc.sortBy =  segArray[ sortSegmentControl.selectedSegmentIndex]
+                
             }
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+    }
     
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        
+         guard CharacterSet(charactersIn: "123456789").isSuperset(of: CharacterSet(charactersIn: string)) else {
+             return false
+         }
+         return true
+    }
 }
+
 

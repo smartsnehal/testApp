@@ -15,7 +15,6 @@ class EmployeeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var imgViewEmployee: UIImageView!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -30,6 +29,14 @@ class EmployeeTableViewCell: UITableViewCell {
     {
         self.lblFullName.text = "\(vm.firstName) \(vm.lastName)"
         self.LblGender.text = vm.gender
-        self.imgViewEmployee.load(url: URL(string: vm.imageName)!)
+        let url = URL(string: vm.imageName)!
+        
+        if let cachedImage = DataManager.shared.imageCache.object(forKey: url.absoluteString as NSString) {
+            self.imgViewEmployee.image = cachedImage as! UIImage
+        } else {
+        self.imgViewEmployee.load(url: url)
+            let image = UIImage(data: (self.imgViewEmployee.image?.pngData())!)
+            DataManager.shared.imageCache.setObject(image!, forKey: url.absoluteString as NSString)
+        }
     }
 }

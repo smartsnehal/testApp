@@ -14,25 +14,49 @@ class EmployeeListTableViewController: UITableViewController {
     private var employeeListVM: EmployeeListViewModel!
     var number = 5
     var sortBy = "name"
+    static var isOffline = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setup()
     }
     
     func setup() {
-        self.navigationController?.navigationBar.prefersLargeTitles = true
         
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        // fetch records from WebAPI
         let url = URL(string: "https://randomuser.me/api/?results=\(number)")!
         
         WebService().getEmployeeList(url:url){ employees in
             if let employees = employees {
-                
+            
                 self.employeeListVM = EmployeeListViewModel(employees: employees)
                 self.employeeListVM.sortEmployees(sortBy: self.sortBy)
-                
+                let empList = EmployeeList.init(Employees: employees)
+                if employees.count != 0
+                {
+                DataManager.shared.saveEmployees(empList: empList)
+                }
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
+                }
+            }
+            else
+            {
+                print("error")
+                EmployeeListTableViewController.isOffline = true
+                
+               if EmployeeListTableViewController.isOffline {
+                DispatchQueue.main.async {
+                    if let empList = DataManager.shared.loadEmployees()
+                    {
+                        
+                        self.employeeListVM = EmployeeListViewModel(employees: empList.Employees!)
+                        self.tableView.reloadData()
+                    }
+                    
+                }
                 }
             }
         }
@@ -71,6 +95,7 @@ class EmployeeListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc  = storyboard?.instantiateViewController(identifier: "EmployeeDetailsViewController") as? EmployeeDetailsViewController {
+            // employee details
             vc.employeeVM = self.employeeListVM.employeeAtIndex(index: indexPath.row)
             self.navigationController?.pushViewController(vc, animated: true)
         }

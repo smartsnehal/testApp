@@ -113,6 +113,7 @@ extension EmployeeViewModel {
     let latitude = NSString( string: self.employee.location.coordinates.latitude).doubleValue
     let longitude = NSString( string: self.employee.location.coordinates.longitude).doubleValue
     let locationCoord = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    print(locationCoord)
         return locationCoord
 }
 }

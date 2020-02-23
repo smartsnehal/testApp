@@ -33,7 +33,17 @@ class EmployeeDetailsViewController: UIViewController {
             fatalError("EmployeeViewModel not available" )
         }
         self.title = vm.fullName
-        imgViewPic.load(url: URL(string: vm.imageLargeName)!)
+        
+        let url = URL(string: vm.imageLargeName)!
+        // imgViewPic.load(url: URL(string: vm.imageLargeName)!)
+        if let cachedImage = DataManager.shared.imageCache.object(forKey: url.absoluteString as NSString) {
+            self.imgViewPic.image = cachedImage as! UIImage
+        } else {
+        self.imgViewPic.load(url: url)
+            let image = UIImage(data: (self.imgViewPic.image?.pngData())!)
+            DataManager.shared.imageCache.setObject(image!, forKey: url.absoluteString as NSString)
+        }
+        
         lblEmail.text = "Email: \(vm.email)"
         lblPhone.text = "Phone: \(vm.phoneNumber)"
         lblDob.text = "DOB: \(vm.dob)"
@@ -46,8 +56,10 @@ class EmployeeDetailsViewController: UIViewController {
     
     func setupMap(coord:CLLocationCoordinate2D)
     {
-        let span = MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
-        let region = MKCoordinateRegion(center: coord, span: span)
+        let regionRadius: CLLocationDistance = 1000
+       
+        let region = MKCoordinateRegion(center: coord,
+                                        latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
         self.mapViewLocation.setRegion(region, animated: true)
         let annotation = MKPointAnnotation()
         annotation.coordinate = coord
